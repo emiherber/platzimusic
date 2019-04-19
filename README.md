@@ -4,7 +4,13 @@
 ```
 npm install
 ```
-
+##Crear una cuenta y registrar aplicacion en la siguiente url
+##para obtener las credenciales necesarias para configurar el archivo 
+##src/api/config.local.js
+##A continuación renombrar el archivo config.local.js a config.js
+```
+https://www.last.fm/api
+```
 ### Compiles and hot-reloads for development
 ```
 npm run serve
