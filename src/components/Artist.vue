@@ -2,11 +2,9 @@
   <ul>
     <li>
       <h2>
-        <a :href="artist.url" target="_blank">
-          {{ artist.name }}
-        </a>
+        <a :href="artist.url" target="_blank">{{ artist.name }}</a>
       </h2>
-      <img :src="artist.image[2]['#text']" alt="">
+      <img :src="artist.image[2]['#text']" alt>
     </li>
   </ul>
 </template>
@@ -18,8 +16,8 @@ export default {
 }
 </script>
 <style>
-  li{
-    display: block;
-    margin: 10px 0px;
-  }
+li {
+  display: block;
+  margin: 10px 0px;
+}
 </style>
