@@ -1,81 +1,32 @@
 <template>
-<div id="app">
-  <img src='./assets/logo.png' alt='Vue logo'>
-  <h1>Platzi Music</h1>
-  <select v-model="selectedcountry">
-    <option v-for="country in countries" :key="country.value" :value="country.value">
-      {{ country.name }}
-    </option>
-  </select>
-  <Spinner v-show="loading"/>
-  <Artist v-for="artist in artists" v-bind:artist="artist" :key="artist.mbid"/>
-</div>
+  <div id="app">
+    <pm-header></pm-header>
+    <router-view></router-view>
+    <pm-footer></pm-footer>
+  </div>
 </template>
 
 <script>
-import Artist from './components/Artist.vue'
-import Spinner from './components/Spinner.vue'
-import getArtists from './api'
+import PmFooter from './components/layout/Footer.vue'
+import PmHeader from './components/layout/Header.vue'
 
 export default {
   name: 'app',
-  data () {
-    return {
-      artists: [],
-      countries: [
-        { name: 'Argentina', value: 'argentina' },
-        { name: 'España', value: 'spain' },
-        { name: 'Colombia', value: 'colombia' }
-      ],
-      selectedcountry: 'argentina',
-      loading: true
-    }
-  },
-  methods: {
-    refreshArtist () {
-      const self = this
-      this.artists = []
-      this.loading = true
-      getArtists(this.selectedcountry)
-        .then(function (artists) {
-          self.artists = artists
-          self.loading = false
-        })
-    }
-  },
-  mounted () {
-    this.refreshArtist()
-  },
   components: {
-    Artist,
-    Spinner
-  },
-  watch: {
-    selectedcountry () {
-      this.refreshArtist()
-    }
+    PmFooter,
+    PmHeader
   }
 }
 </script>
 
-<style>
-#app{
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-h3{margin: 40px 0 0;}
+<style lang="scss">
+@import "./scss/main.scss";
 
-ul{
-  list-style-type: none;
-  padding: 0;
+.results {
+  margin-top: 50px;
 }
-li{
-    display: inline-block;
-    margin: 0 10px;
+
+.is-active {
+  border: 3px #23d160 solid;
 }
-a{color: #42b983;}
 </style>
