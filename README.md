@@ -4,12 +4,8 @@
 ```
 npm install
 ```
-Crear una cuenta y registrar aplicacion en la siguiente url
-para obtener las credenciales necesarias para configurar el archivo 
-src/api/config.local.js.
-A continuación renombrar el archivo config.local.js a config.js
-```
-https://www.last.fm/api
+Obtendremos la lista de canciones de la API de platzi utilizando la librería trae
+y la comunicación entre componentes es a traves del pluggin event-bus.js
 ```
 ### Compiles and hot-reloads for development
 ```
