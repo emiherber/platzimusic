@@ -4,8 +4,7 @@
 ```
 npm install
 ```
-Obtendremos la lista de canciones de la API de platzi utilizando la librería trae
-y la comunicación entre componentes es a traves del pluggin event-bus.js
+Obtendremos la lista de canciones a traves de la API de platzi, utilizando la librería trae y la comunicación entre componentes es gestionada por el pluggin event-bus.js
 ```
 ### Compiles and hot-reloads for development
 ```
