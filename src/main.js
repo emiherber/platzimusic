@@ -2,10 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import EventBus from './plugins/event-bus'
 import VueRouter from 'vue-router'
-import routes from '@/routes'
+import routes from './routes'
 import msTomm from './filters/ms-to-mm'
 import blur from './directives/blur'
-import store from './store'
 
 Vue.config.productionTip = false
 
@@ -21,6 +20,5 @@ const router = new VueRouter({
 
 new Vue({
   render: h => h(App),
-  store,
   router
 }).$mount('#app')
