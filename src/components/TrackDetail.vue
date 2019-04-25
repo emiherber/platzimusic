@@ -1,20 +1,22 @@
 <template>
-  <div class="container" v-if="track.album">
+  <div class="container" v-if="track && track.album">
     <div class="columns">
       <div class="column is-3 has-text-centered">
         <figure class="media-left">
           <p class="image">
             <img :src="track.album.images[0].url">
           </p>
-          <p class="button is-primary is-large">
-            <span class="icon" @click="selectTrack">▶️</span>
+          <p class="button-bar">
+            <a class="button is-primary is-large">
+              <span class="icon" @click="selectTrack">▶️</span>
+            </a>
           </p>
         </figure>
       </div>
       <div class="column is-8">
         <div class="panel">
           <div class="panel-heading">
-            <h1 class="title">{{track.name}}</h1>
+            <h1 class="title">{{trackTitle}}</h1>
           </div>
           <div class="panel-block">
             <article class="media-content">
@@ -42,24 +44,24 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapGetters } from 'vuex'
 import trackMixin from '@/mixins/track'
-import trackService from '@/services/track'
 
 export default {
   mixins: [trackMixin],
-
-  data () {
-    return {
-      track: {}
-    }
+  computed: {
+    ...mapState(['track']),
+    ...mapGetters(['trackTitle'])
   },
-
   created () {
     const id = this.$route.params.id
 
-    trackService.getById(id).then(res => {
-      this.track = res
-    })
+    if (!this.track || !this.track.id || this.track.id !== id) {
+      this.getTrackById({ id }).then(() => console.log('Track loaded...'))
+    }
+  },
+  methods: {
+    ...mapActions(['getTrackById'])
   }
 }
 </script>
@@ -67,5 +69,8 @@ export default {
 <style lang="scss" scoped>
 .columns {
   margin: 20px;
+}
+.button-bar {
+  margin-top: 20px;
 }
 </style>

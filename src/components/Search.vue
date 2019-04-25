@@ -53,9 +53,9 @@ import PmTrack from './Track.vue'
 
 import PmLoader from './shared/Loader.vue'
 import PmNotification from './shared/Notification.vue'
-import { setTimeout } from 'timers'
 
 export default {
+  name: 'app',
   components: {
     PmTrack,
     PmLoader,
