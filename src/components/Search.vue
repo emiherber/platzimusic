@@ -47,13 +47,13 @@
 </template>
 
 <script>
-import tracksService from "@/services/track";
+import tracksService from '@/services/track'
 
-import PmTrack from "./Track.vue";
+import PmTrack from './Track.vue'
 
-import PmLoader from "./shared/Loader.vue";
-import PmNotification from "./shared/Notification.vue";
-import { setTimeout } from "timers";
+import PmLoader from './shared/Loader.vue'
+import PmNotification from './shared/Notification.vue'
+import { setTimeout } from 'timers'
 
 export default {
   components: {
@@ -61,47 +61,47 @@ export default {
     PmLoader,
     PmNotification
   },
-  data() {
+  data () {
     return {
-      searchQuery: "",
+      searchQuery: '',
       tracks: [],
       isLoading: false,
-      selectedTrack: "",
+      selectedTrack: '',
       showNotification: false
-    };
+    }
   },
   computed: {
-    searchMessage() {
-      return `Encontrados: ${this.tracks.length}`;
+    searchMessage () {
+      return `Encontrados: ${this.tracks.length}`
     }
   },
   watch: {
-    showNotification() {
+    showNotification () {
       if (this.showNotification) {
         setTimeout(() => {
-          this.showNotification = false;
-        }, 3000);
+          this.showNotification = false
+        }, 3000)
       }
     }
   },
   methods: {
-    search() {
+    search () {
       if (!this.searchQuery) {
-        return;
+        return
       }
-      this.isLoading = true;
+      this.isLoading = true
 
       tracksService.search(this.searchQuery).then(res => {
-        this.showNotification = res.tracks.total === 0;
-        this.tracks = res.tracks.items;
-        this.isLoading = false;
-      });
+        this.showNotification = res.tracks.total === 0
+        this.tracks = res.tracks.items
+        this.isLoading = false
+      })
     },
-    setSelectedTrack(id) {
-      this.selectedTrack = id;
+    setSelectedTrack (id) {
+      this.selectedTrack = id
     }
   }
-};
+}
 </script>
 
 <style lang="scss">

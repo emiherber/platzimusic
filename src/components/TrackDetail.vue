@@ -42,26 +42,26 @@
 </template>
 
 <script>
-import trackMixin from "@/mixins/track";
-import trackService from "@/services/track";
+import trackMixin from '@/mixins/track'
+import trackService from '@/services/track'
 
 export default {
   mixins: [trackMixin],
 
-  data() {
+  data () {
     return {
       track: {}
-    };
+    }
   },
 
-  created() {
-    const id = this.$route.params.id;
+  created () {
+    const id = this.$route.params.id
 
     trackService.getById(id).then(res => {
-      this.track = res;
-    });
+      this.track = res
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
